@@ -9,10 +9,9 @@ public class Baekjoon4796 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = null;
+        StringTokenizer st;
 
         //0 초기화
-        int i = 0;
         int L = 0;
         int P = 0;
         int V = 0;
