@@ -21,18 +21,18 @@ public class Baekjoon2003 {
         }
 
         //투포인터 핵심로직
-        int sum = 0;
+        int sum = 0;    //누적합
         int start = 0, end = 0, count=0;
 
-        while(true) {   //무한루프
-            if(sum>=m) {
-                sum = sum - arr[start++];
-            }else if(end==n) {  // end가 맨 끝에 도착했을 경우
-                break;  // 반복문을 끝낸다
-            } else {    // 합이 m보다 작으면
-                sum = sum + arr[end++]; //  값을 더해주고 end++한다
+        while(true) {
+            if(sum >= m) {  //sum이 m보다 크거나 같은 경우
+                sum = sum - arr[start++];   //현재까지의 누적합에서 arr[start++] 배열을 뺀다.
+            }else if(end == n) {  // end가 맨 끝에 도착했을 경우
+                break; //반복문 끝
+            } else {    //sum이 m보다 작을 경우
+                sum = sum + arr[end++]; //현재까지의 누적합에서 arr[end++] 배열을 합한다.
             }
-            if(sum==m) {
+            if(sum == m) {
                 count++;    // sum과 m이 일치하는 경우 count를 증가시킨다
             }
         }
