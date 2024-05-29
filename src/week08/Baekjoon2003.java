@@ -8,29 +8,33 @@ public class Baekjoon2003 {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
         int[] arr = new int[n];
+
         st = new StringTokenizer(br.readLine());
 
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
+        //투포인터 핵심로직
+        int sum = 0;
+        int start = 0, end = 0, count=0;
 
-        int s = 0, e = 0, sum = 0, count=0;
-        while(true) {
+        while(true) {   //무한루프
             if(sum>=m) {
-                sum -= arr[s++];
-            }else if(e==n) break;
-            else {
-                sum += arr[e++];
+                sum = sum - arr[start++];
+            }else if(end==n) {  // end가 맨 끝에 도착했을 경우
+                break;  // 반복문을 끝낸다
+            } else {    // 합이 m보다 작으면
+                sum = sum + arr[end++]; //  값을 더해주고 end++한다
             }
             if(sum==m) {
-                count++;
+                count++;    // sum과 m이 일치하는 경우 count를 증가시킨다
             }
-
         }
         System.out.println(count);
     }
