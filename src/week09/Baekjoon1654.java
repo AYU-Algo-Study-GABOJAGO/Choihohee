@@ -19,7 +19,7 @@ public class Baekjoon1654 {
         int[] arr = new int[K];
 
         long max = 0;   //입력한 랜선중 가장 길이가 긴 랜선
-
+        long min = 0;   //입력한 랜선중 가장 길이가 짧은 랜선
         // 입력과 동시에 해당 랜선의 길이가 최댓값인지를 확인하고 max를 갱신
         for (int i = 0; i < K; i++) {
             arr[i] = Integer.parseInt(br.readLine());
@@ -33,7 +33,6 @@ public class Baekjoon1654 {
         //자연수 탐색 범위를 0 ~ max 가 아닌 0 ~ max + 1 범위에서 탐색
         max++;
 
-        long min = 0;   //입력한 랜선중 가장 길이가 짧은 랜선
         long middle = 0;
 
         while (min < max) {
@@ -47,18 +46,18 @@ public class Baekjoon1654 {
             }
             /*
              *  [upper bound 형식]
-             *  mid길이로 잘랐을 때의 개수가 만들고자 하는 랜선의 개수보다 작다면
+             *  middle길이로 잘랐을 때의 개수가 만들고자 하는 랜선의 개수보다 작다면
              *  자르고자 하는 길이를 줄이기 위해 최대 길이를 줄인다.
              *  그 외에는 자르고자 하는 길이를 늘려야 하므로 최소 길이를 늘린다.
              */
-            if(count < N) {
+            if(count < N) { //만들어진 랜선 갯수가 N보다 작을때, 더 짧은 길이에서 구해야 하므로 max를 middle로 설정하여 탐색 범위를 줄인다.
                 max = middle;
             }
-            else {
+            else {//더 긴 길이에서도 가능한지 확인하기 위해 min을 middle + 1로 설정하여 탐색 범위를 늘린다.
                 min = middle + 1;
             }
         }
-        // UpperBound로 얻어진 값(min)에 -1이 최대 길이가 된다.
+        //min은 탐색 범위 내에서 가능한 최댓값을 가리키게 된다.거기서 UpperBound로 얻어진 값(min)에 -1이 최대 길이가 된다.
         System.out.println(min - 1);
     }
 }
